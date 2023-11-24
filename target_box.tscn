@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://dekmija0d37wu"]
+
+[ext_resource type="Script" path="res://target_box.gd" id="1_0nkse"]
+
+[node name="TargetBox" type="ColorRect"]
+offset_left = 215.0
+offset_top = 364.0
+offset_right = 423.0
+offset_bottom = 550.0
+script = ExtResource("1_0nkse")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.115
+anchor_right = -0.115
+offset_left = 99.92
+offset_top = 200.0
+offset_right = 141.92
+offset_bottom = 229.0
+text = "x of y"
