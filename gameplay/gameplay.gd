@@ -2,8 +2,12 @@ extends Node2D
 
 @export var targetBoxScene: PackedScene
 @onready var peanutLabel := $PeanutLabel
+@onready var scoreLabel := $ScoreLabel
+@onready var livesLabel := $LivesLabel
 
 var currentPeanut := 5
+@export var score := 0
+@export var lives := 3
 
 func _process(_delta: float) -> void:
 	#$Icon.rotate(_delta)
@@ -23,15 +27,17 @@ func _pause() -> void:
 	$Paused.pause()
 	get_tree().paused = true
 
-var boxes = []
-var offset = 300
+var boxes := []
+var offset := 300
 
 func _ready():
 	for i in range(3):
-		var box = targetBoxScene.instantiate()
+		var box: TargetBox = targetBoxScene.instantiate()
 		box.position.x += i * offset
 		add_child(box)
 		boxes.append(box)
+		box.box_complete.connect(on_box_complete)
+		box.box_overflowed.connect(on_box_overflowed)
 
 	new_peanut()
 	
@@ -40,3 +46,10 @@ func new_peanut():
 	peanutLabel.text = "Peanut: %d" % currentPeanut
 
 	
+func on_box_complete():
+	score += 1
+	scoreLabel.text = "Score: %d" % score
+
+func on_box_overflowed():
+	lives -= 1
+	livesLabel.text = "Lives: %d" % lives

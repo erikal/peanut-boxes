@@ -23,3 +23,17 @@ grow_vertical = 1
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Peanut: 5"
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 1071.0
+offset_top = 69.0
+offset_right = 1132.0
+offset_bottom = 95.0
+text = "Score: 0"
+
+[node name="LivesLabel" type="Label" parent="."]
+offset_left = 1065.0
+offset_top = 18.0
+offset_right = 1122.0
+offset_bottom = 44.0
+text = "Lives: 3"
