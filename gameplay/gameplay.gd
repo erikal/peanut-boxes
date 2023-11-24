@@ -4,6 +4,7 @@ extends Node2D
 @onready var peanutLabel := $PeanutLabel
 @onready var scoreLabel := $ScoreLabel
 @onready var livesLabel := $LivesLabel
+@onready var audio: Audio = $Audio
 
 var currentPeanut := 5
 @export var score := 0
@@ -21,6 +22,7 @@ func _input(event: InputEvent) -> void:
 		var action_name = "box%d" % (i + 1)
 		if event.is_action_pressed(action_name):
 			boxes[i].add_peanut(currentPeanut)
+			audio.play_sound(Global.SoundEffects.PEANUT_PLACED)
 			new_peanut()
 	
 func _pause() -> void:
@@ -47,9 +49,17 @@ func new_peanut():
 
 	
 func on_box_complete():
+	audio.play_sound(Global.SoundEffects.BOX_COMPLETE)
 	score += 1
 	scoreLabel.text = "Score: %d" % score
 
 func on_box_overflowed():
+	audio.play_sound(Global.SoundEffects.BOX_OVERFLOW)
 	lives -= 1
 	livesLabel.text = "Lives: %d" % lives
+	if lives == 0:
+		game_over()
+		
+func game_over():
+	audio.play_sound(Global.SoundEffects.GAME_OVER)
+	$UI/GameOverLabel.show()

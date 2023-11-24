@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://bb6jnlw04b1wm"]
+
+[ext_resource type="AudioStream" uid="uid://cg8mjopv0gdbk" path="res://assets/sounds/Music Box Game Over III.mp3" id="1_ryhwa"]
+[ext_resource type="Script" path="res://audio.gd" id="1_vgctp"]
+[ext_resource type="AudioStream" uid="uid://db2l3s2a5i347" path="res://assets/sounds/woosh 3.wav" id="2_ydpm0"]
+[ext_resource type="AudioStream" uid="uid://cvxrkt8uae2qq" path="res://assets/sounds/Picked Coin Echo 2.wav" id="3_25tj7"]
+[ext_resource type="AudioStream" uid="uid://7rwrala51haa" path="res://assets/sounds/cyborg_hurt.ogg" id="4_flo62"]
+
+[node name="Audio" type="Node2D"]
+script = ExtResource("1_vgctp")
+
+[node name="GameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_ryhwa")
+
+[node name="PeanutPlaced" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ydpm0")
+
+[node name="BoxComplete" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_25tj7")
+
+[node name="BoxOverflow" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_flo62")
