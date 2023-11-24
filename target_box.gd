@@ -4,17 +4,20 @@ class_name TargetBox
 
 @export var current = 0
 @export var capacity = 10
- 
+@onready var boxFill := $BoxFill
+
 signal box_overflowed
 signal box_complete
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	setCurrent(0)
+	boxFill.color = Color(.5, .5, .2, 1)
+	boxFill.size = Vector2(size.x, 100)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	updateFill()
 	
 
 func add_peanut(weight: int):
@@ -31,3 +34,11 @@ func add_peanut(weight: int):
 func setCurrent(new_value: int):
 	current = new_value
 	$Label.text = str(current) + " of " + str(capacity)
+
+func updateFill():
+	var fill_ratio = float(current)/capacity
+	var fill_pixels = int(size.y * fill_ratio)
+	boxFill.size.y = fill_pixels
+	boxFill.position.y = size.y - fill_pixels
+
+
