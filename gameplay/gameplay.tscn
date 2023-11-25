@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdnyglk1i1cxl"]
+[gd_scene load_steps=8 format=3 uid="uid://bdnyglk1i1cxl"]
 
 [ext_resource type="Script" path="res://gameplay/gameplay.gd" id="1_thqv1"]
 [ext_resource type="PackedScene" uid="uid://cko02oljhiby" path="res://paused/paused.tscn" id="3_w8wrl"]
 [ext_resource type="PackedScene" uid="uid://dekmija0d37wu" path="res://target_box.tscn" id="4_4lkrx"]
 [ext_resource type="PackedScene" uid="uid://cee5dna3u27jf" path="res://assets/select_sfx.tscn" id="4_7kf0b"]
-[ext_resource type="PackedScene" uid="uid://bb6jnlw04b1wm" path="res://audio.tscn" id="5_2a7ue"]
+[ext_resource type="PackedScene" path="res://audio.tscn" id="5_2a7ue"]
+[ext_resource type="Texture2D" uid="uid://d3ll647c74nv" path="res://gameplay/peanut.png" id="6_2dcpn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ey5v4"]
 font_size = 72
@@ -69,3 +70,9 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "YOU LOSE"
 label_settings = SubResource("LabelSettings_ey5v4")
+
+[node name="PeanutSprite" type="Sprite2D" parent="."]
+modulate = Color(1, 0.752941, 0, 1)
+position = Vector2(653, 120)
+scale = Vector2(1, 0.95)
+texture = ExtResource("6_2dcpn")

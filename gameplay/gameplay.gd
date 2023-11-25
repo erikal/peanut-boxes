@@ -4,6 +4,7 @@ extends Node2D
 @onready var peanutLabel := $PeanutLabel
 @onready var scoreLabel := $ScoreLabel
 @onready var livesLabel := $LivesLabel
+@onready var peanutSprite := $PeanutSprite
 @onready var audio: Audio = $Audio
 
 var currentPeanut := 5
@@ -46,6 +47,7 @@ func _ready():
 func new_peanut():
 	currentPeanut = randi_range(1,5)
 	peanutLabel.text = "Peanut: %d" % currentPeanut
+	peanutSprite.scale = Vector2(1, 1) * currentPeanut 
 
 	
 func on_box_complete():
