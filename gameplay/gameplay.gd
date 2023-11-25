@@ -11,6 +11,8 @@ var currentPeanut := 5
 @export var score := 0
 @export var lives := 3
 
+var is_game_over = false
+
 func _process(_delta: float) -> void:
 	#$Icon.rotate(_delta)
 	pass
@@ -19,6 +21,10 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_released("pause"):
 		call_deferred("_pause")
 	
+	if is_game_over:
+		# ignore player inputs
+		return
+		
 	for i in range(3):
 		var action_name = "box%d" % (i + 1)
 		if event.is_action_pressed(action_name):
@@ -64,4 +70,9 @@ func on_box_overflowed():
 		
 func game_over():
 	audio.play_sound(Global.SoundEffects.GAME_OVER)
-	$UI/GameOverLabel.show()
+	$UI/GameOverUI.show()
+	is_game_over = true
+
+
+func _on_restart_button_pressed() -> void:
+	get_tree().reload_current_scene()

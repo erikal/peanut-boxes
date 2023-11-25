@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cko02oljhiby" path="res://paused/paused.tscn" id="3_w8wrl"]
 [ext_resource type="PackedScene" uid="uid://dekmija0d37wu" path="res://target_box.tscn" id="4_4lkrx"]
 [ext_resource type="PackedScene" uid="uid://cee5dna3u27jf" path="res://assets/select_sfx.tscn" id="4_7kf0b"]
-[ext_resource type="PackedScene" path="res://audio.tscn" id="5_2a7ue"]
+[ext_resource type="PackedScene" uid="uid://bb6jnlw04b1wm" path="res://audio.tscn" id="5_2a7ue"]
 [ext_resource type="Texture2D" uid="uid://d3ll647c74nv" path="res://gameplay/peanut.png" id="6_2dcpn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ey5v4"]
@@ -23,6 +23,32 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="GameOverUI" type="VBoxContainer" parent="UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -174.0
+offset_right = 174.0
+offset_bottom = 137.0
+grow_horizontal = 2
+
+[node name="GameOverLabel" type="Label" parent="UI/GameOverUI"]
+layout_mode = 2
+text = "YOU LOSE"
+label_settings = SubResource("LabelSettings_ey5v4")
+
+[node name="RestartButton" type="Button" parent="UI/GameOverUI"]
+layout_mode = 2
+text = "Restart"
 
 [node name="SelectSfx" parent="." instance=ExtResource("4_7kf0b")]
 
@@ -47,32 +73,10 @@ text = "Lives: 3"
 
 [node name="Audio" parent="." instance=ExtResource("5_2a7ue")]
 
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1280.0
-offset_bottom = 720.0
-
-[node name="GameOverLabel" type="Label" parent="UI"]
-visible = false
-z_index = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -194.0
-offset_top = -71.0
-offset_right = 154.0
-offset_bottom = 31.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "YOU LOSE"
-label_settings = SubResource("LabelSettings_ey5v4")
-
 [node name="PeanutSprite" type="Sprite2D" parent="."]
 modulate = Color(1, 0.752941, 0, 1)
-position = Vector2(653, 120)
+position = Vector2(648, 201)
 scale = Vector2(1, 0.95)
 texture = ExtResource("6_2dcpn")
+
+[connection signal="pressed" from="UI/GameOverUI/RestartButton" to="." method="_on_restart_button_pressed"]
