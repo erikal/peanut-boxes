@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bdnyglk1i1cxl"]
+[gd_scene load_steps=9 format=3 uid="uid://bdnyglk1i1cxl"]
 
 [ext_resource type="Script" path="res://gameplay/gameplay.gd" id="1_thqv1"]
 [ext_resource type="PackedScene" uid="uid://cko02oljhiby" path="res://paused/paused.tscn" id="3_w8wrl"]
@@ -11,6 +11,9 @@
 font_size = 72
 outline_size = 24
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t8w10"]
+font_size = 32
 
 [node name="Gameplay" type="Node2D"]
 script = ExtResource("1_thqv1")
@@ -53,23 +56,27 @@ text = "Restart"
 [node name="SelectSfx" parent="." instance=ExtResource("4_7kf0b")]
 
 [node name="PeanutLabel" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 611.0
+offset_top = 275.0
+offset_right = 684.0
+offset_bottom = 301.0
 text = "Peanut: 5"
 
 [node name="ScoreLabel" type="Label" parent="."]
-offset_left = 1071.0
-offset_top = 69.0
-offset_right = 1132.0
-offset_bottom = 95.0
+offset_left = 1000.0
+offset_top = 72.0
+offset_right = 1061.0
+offset_bottom = 98.0
 text = "Score: 0"
+label_settings = SubResource("LabelSettings_t8w10")
 
 [node name="LivesLabel" type="Label" parent="."]
-offset_left = 1065.0
-offset_top = 18.0
-offset_right = 1122.0
-offset_bottom = 44.0
+offset_left = 1000.0
+offset_top = 24.0
+offset_right = 1057.0
+offset_bottom = 50.0
 text = "Lives: 3"
+label_settings = SubResource("LabelSettings_t8w10")
 
 [node name="Audio" parent="." instance=ExtResource("5_2a7ue")]
 
