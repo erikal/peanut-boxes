@@ -24,6 +24,7 @@ func add_peanut(weight: int):
 	var new_total = current + weight
 	if new_total > capacity:
 		box_overflowed.emit()
+		explode()
 		setCurrent(0)
 	elif new_total == capacity:
 		box_complete.emit()
@@ -41,4 +42,10 @@ func updateFill():
 	boxFill.size.y = fill_pixels
 	boxFill.position.y = size.y - fill_pixels
 
-
+func explode():
+	$ExplodeTimer.start()
+	$ExplodeParticles.show()
+	$ExplodeParticles.restart()
+	
+func _on_explode_timer_timeout() -> void:
+	$ExplodeParticles.hide()
